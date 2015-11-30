@@ -9,7 +9,7 @@ from urllib.request import urlopen
 """
 获取IP 电话 邮编  等基础信息工具
 """
-class IpPPTool():
+class APIER():
     def getIpInfoFromFreefeoip(self,ipAddress):
         response=urlopen("http://freegeoip.net/json/"+ipAddress).read().decode('utf-8')
         responseJson=json.loads(response)
@@ -103,6 +103,31 @@ class IpPPTool():
         :return:json对象
         '''
         return json.dumps(dict,sort_keys=True)
+
+    '''
+    outlook 12345.A
+    Your API Key: NZ7AMCIHYO4UEKE8U
+    Your Consumer Key: 3b3956728c1f7930636762e4eabf6516
+    Your Shared Secret: 5WbJoFHEQr+lSL4YLH2upg
+    '''
+    def echonest(self):
+        #http://developer.echonest.com/docs/v4
+        #http://developer.echonest.com/api/v4/artist/songs?api_key=NZ7AMCIHYO4UEKE8U&id=AR5HF791187B9ABAF4&format=json&start=0&results=10
+        #http://developer.echonest.com/api/v4/artist/songs?api_key=NZ7AMCIHYO4UEKE8U&name=see%20you%20again
+        pass
+
+    def Twitter(self):
+        #https://dev.twitter.com/overview/api
+        pass
+
+    def google(self):
+
+        pass
+
+    def getIpCountry(self,json):
+        return json.get("country_code")
+
 if __name__ == "__main__":
-    iper=IpPPTool()
-    print(demjson.decode(iper.getPhoneInfoFromIP138('18080959929')))
+    iper=APIER()
+    #print(demjson.decode(iper.getPhoneInfoFromIP138('18080959929')))
+    print(iper.getIpCountry(iper.getIpInfoFromFreefeoip("50.78.253.58")))
